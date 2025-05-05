@@ -1,0 +1,1 @@
+export const BACKEND_URL = "https://zayy-backend-1nsc.onrender.com";
