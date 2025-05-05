@@ -1,9 +1,9 @@
 import { Toaster } from "sonner"
-import LoginPage from "./pages/login"
+import Router from "./router"
 function App() {
   return (
       <>
-      <LoginPage />
+      <Router />
       <Toaster position="top-center" richColors />
       </>
   )
