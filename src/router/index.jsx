@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Login from "@/pages/login";
+import Layout from "@/layout";
 import { jwtDecode } from "jwt-decode";
 import { getItem, removeItem } from "@/utils/local_storage";
 import { toast } from "sonner";
 import { clearCredentials } from "@/redux/admin/adminSlice";
 import { useDispatch } from "react-redux";
+import Dashboard from "@/pages/dashboard";
+import ErrorPage from "@/components/errors/404";
 
 const Router = () => {
   const dispatch = useDispatch();
@@ -38,8 +41,21 @@ const Router = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="/" element={<Navigate to="/dashboard" />} />
+
       <Route path="/login" element={<Login />} />
+
+      <Route
+        path="/dashboard"
+        element={
+          // <ProtectedRoute>
+          <Layout />
+          // </ProtectedRoute>
+        }
+      >
+        <Route index element={<Dashboard />} />
+      </Route>
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
   )
 };
