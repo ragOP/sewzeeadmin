@@ -32,9 +32,8 @@ export function LoginForm({ className, ...props }) {
     setLoading(true);
     try {
       const response = await loginUser(formData);
-      if (response?.success) {
-        const data = response?.response?.data;
-        const tokenData = data?.token;
+      if (response?.response?.token) {
+        const tokenData = response?.response?.token;
 
         if (tokenData) {
           const localStoragePayload = {
@@ -52,7 +51,7 @@ export function LoginForm({ className, ...props }) {
         toast.success("Login successful!");
         navigate("/dashboard");
       } else {
-        toast.error(response?.response?.message || "Login failed");
+        toast.error(response?.response?.data?.message || "Login failed");
       }
     } catch (error) {
       toast.error(error.message || "Something went wrong");
