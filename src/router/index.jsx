@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import Dashboard from "@/pages/dashboard";
 import ErrorPage from "@/components/errors/404";
 import CustomerList from "@/pages/customer_list";
+import CustomerDetails from "@/pages/customer_list/page/customer_details";
 
 const Router = () => {
   const dispatch = useDispatch();
@@ -55,7 +56,8 @@ const Router = () => {
         }
       >
         <Route index element={<Dashboard />} />
-        <Route path="users" element={<CustomerList />} />
+        <Route path="customer_list" element={<CustomerList />} />
+        <Route path="customer_list/details/:id" element={<CustomerDetails />} />
       </Route>
       <Route path="*" element={<ErrorPage />} />
     </Routes>

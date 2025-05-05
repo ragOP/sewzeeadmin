@@ -44,7 +44,7 @@ import {
       },
       {
         title: "Customers List",
-        url: "/dashboard/users",
+        url: "/dashboard/customer_list",
         icon: Users,
         isActive: true,
         items: [],

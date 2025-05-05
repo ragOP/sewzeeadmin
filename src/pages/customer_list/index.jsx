@@ -1,12 +1,11 @@
 import NavbarItem from "@/components/navbar/navbar_item";
 import CustomActionMenu from "@/components/custom_action";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
 import UsersTable from "./components/UserTable";
 import { useDebounce } from "@uidotdev/usehooks";
 
 const CustomerList = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const paramInitialState = {
     page: 1,
@@ -19,9 +18,9 @@ const CustomerList = () => {
 
   const debouncedSearch = useDebounce(searchText, 500);
 
-  const onAdd = () => {
-    navigate("/dashboard/users/add");
-  };
+  // const onAdd = () => {
+  //   navigate("/dashboard/users/add");
+  // };
 
   const handleSearch = (e) => {
     setSearchText(e.target.value);

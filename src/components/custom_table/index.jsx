@@ -18,8 +18,9 @@ import Typography from "@/components/typography";
  * @param {boolean} isLoading - Loading state
  * @param {Error | null} error - Error state
  * @param {Function} fetchData - Function to refetch data (optional)
+ * @param {Function} onRowClick - Function to handle row click (optional)
  */
-const CustomTable = ({ columns, data, isLoading, error }) => {
+const CustomTable = ({ columns, data, isLoading, error, onRowClick}) => {
   if (isLoading) {
     return (
       <Card className="p-4">
@@ -68,17 +69,21 @@ const CustomTable = ({ columns, data, isLoading, error }) => {
           </TableHeader>
           <TableBody>
             {data.map((row, index) => (
-              <TableRow key={`${row.key}_${index}`}>
-                {columns.map((col) => (
-                  <TableCell key={col.key} className="whitespace-nowrap">
-                    {col.render ? (
-                      col.render(row[col.key], row)
-                    ) : (
-                      <Typography>{row[col.key]}</Typography>
-                    )}
-                  </TableCell>
-                ))}
-              </TableRow>
+               <TableRow
+               key={`${row.key || row.id || index}`}
+               onClick={() => onRowClick?.(row)}
+               className="cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+             >
+               {columns.map((col) => (
+                 <TableCell key={col.key} className="whitespace-nowrap">
+                   {col.render ? (
+                     col.render(row[col.key], row)
+                   ) : (
+                     <Typography>{row[col.key]}</Typography>
+                   )}
+                 </TableCell>
+               ))}
+             </TableRow>
             ))}
           </TableBody>
         </Table>

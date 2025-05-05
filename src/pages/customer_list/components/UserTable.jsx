@@ -4,8 +4,10 @@ import Typography from "@/components/typography";
 import { format } from "date-fns";
 import { useEffect } from "react";
 import { fetchUsers } from "../helpers/fetchUsers";
+import { useNavigate } from "react-router";
 
 const UsersTable = ({ setUsersLength, params }) => {
+  const navigate = useNavigate();
   const {
     data: users,
     isLoading,
@@ -18,6 +20,11 @@ const UsersTable = ({ setUsersLength, params }) => {
   useEffect(() => {
     setUsersLength(users?.length);
   }, [users]);
+
+  const handleRowClick = (row) => {
+    navigate(`/dashboard/customer_list/details/${row._id}`); 
+  };
+  
 
   const columns = [
     {
@@ -84,6 +91,7 @@ const UsersTable = ({ setUsersLength, params }) => {
       isLoading={isLoading}
       error={error}
       emptyStateMessage="No users found"
+      onRowClick={handleRowClick}
     />
   );
 };
