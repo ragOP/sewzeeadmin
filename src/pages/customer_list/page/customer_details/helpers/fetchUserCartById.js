@@ -7,8 +7,9 @@ export const fetchUserCartById = async (id) => {
         endpoint: `${endpoints.users_cart}/${id}`,
         method: "GET",
       });
-      if (apiResponse?.response?.users) {
-        return apiResponse?.response?.users;
+      console.log(apiResponse);
+      if (apiResponse?.response?.data) {
+        return apiResponse?.response?.data;
       }
   
       return [];

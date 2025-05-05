@@ -4,6 +4,8 @@ import Login from "@/pages/login";
 import Layout from "@/layout";
 import { jwtDecode } from "jwt-decode";
 import { getItem, removeItem } from "@/utils/local_storage";
+import ProtectedRoute from "@/auth/ProtectedRoute";
+import PublicRoute from "@/auth/PublicRoute";
 import { toast } from "sonner";
 import { clearCredentials } from "@/redux/admin/adminSlice";
 import { useDispatch } from "react-redux";
@@ -45,13 +47,20 @@ const Router = () => {
     <Routes>
       <Route path="/" element={<Navigate to="/dashboard" />} />
 
-      <Route path="/login" element={<Login />} />
+      <Route
+        path="/login"
+        element={
+          // <PublicRoute>
+            <Login />
+          // </PublicRoute>
+        }
+      />
 
       <Route
         path="/dashboard"
         element={
           // <ProtectedRoute>
-          <Layout />
+            <Layout />
           // </ProtectedRoute>
         }
       >
@@ -61,7 +70,7 @@ const Router = () => {
       </Route>
       <Route path="*" element={<ErrorPage />} />
     </Routes>
-  )
+  );
 };
 
-export default Router;  
+export default Router;

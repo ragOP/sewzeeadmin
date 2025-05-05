@@ -7,8 +7,8 @@ export const fetchUserWishlistById = async (id) => {
         endpoint: `${endpoints.user_wishlist}/${id}`,
         method: "GET",
       });
-      if (apiResponse?.response?.users) {
-        return apiResponse?.response?.users;
+      if (apiResponse?.response?.data) {
+        return apiResponse?.response?.data;
       }
   
       return [];
