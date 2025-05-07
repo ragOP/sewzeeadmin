@@ -5,4 +5,5 @@ export const endpoints = {
     user_wishlist: "api/admin/getUserWishlist",
     sellers: "api/admin/getAllSeller",
     seller_posts: "api/admin/getSellerPosts",
+    products: "api/admin/getAllProducts"
 }

@@ -15,6 +15,7 @@ import CustomerList from "@/pages/customer_list";
 import CustomerDetails from "@/pages/customer_list/page/customer_details";
 import SellerList from "@/pages/seller_list";
 import SellerPosts from "@/pages/seller_list/pages/seller_posts";
+import AllProducts from "@/pages/all_products";
 
 const Router = () => {
   const dispatch = useDispatch();
@@ -65,6 +66,8 @@ const Router = () => {
 
           <Route path="seller_list" element={<SellerList />} />
           <Route path="seller_list/posts/:id" element={<SellerPosts />} />
+
+          <Route path="products" element={<AllProducts />} />
         </Route>
       </Route>
 

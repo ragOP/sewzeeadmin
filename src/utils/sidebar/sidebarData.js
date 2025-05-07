@@ -57,6 +57,14 @@ import {
         isActive: true,
         items: [],
         roles: ["admin"],
+      },
+      {
+        title: "All Products",
+        url: "/dashboard/products",
+        icon: Package,
+        isActive: true,
+        items: [],
+        roles: ["admin"],
       }
     ],
     // projects: [
