@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-import { Eye } from "lucide-react";
+import { BookUser, Eye } from "lucide-react";
 
 import CustomTable from "@/components/custom_table";
 import Typography from "@/components/typography";
@@ -23,7 +23,7 @@ const SellerTable = ({ setSellersLength, payload }) => {
     setSellersLength(sellers?.length || 0);
   }, [sellers]);
 
-  const handleRowClick = (row) => {
+  const onSellerDetails = (row) => {
     navigate(`/dashboard/seller_list/details/${row._id}`);
   };
 
@@ -98,6 +98,11 @@ const SellerTable = ({ setSellersLength, payload }) => {
               icon: Eye,
               action: () => onViewPosts(row),
             },
+            {
+              label: "View Seller",
+              icon: BookUser,
+              action: () => onSellerDetails(row),
+            }
           ]}
         />
       ),
@@ -111,7 +116,6 @@ const SellerTable = ({ setSellersLength, payload }) => {
       isLoading={isLoading}
       error={error}
       emptyStateMessage="No sellers found"
-      // onRowClick={handleRowClick}
     />
   );
 };

@@ -6,6 +6,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Card,
   CardHeader,
@@ -86,9 +87,43 @@ const CustomerItems = ({ id }) => {
       </div>
 
       {isLoading ? (
-        <div className="flex justify-center items-center h-40">
-          <Typography>Loading...</Typography>
-        </div>
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+         {Array.from({ length: 6 }).map((_, i) => (
+           <Card key={i} className="overflow-hidden">
+             <CardHeader>
+               <div className="flex justify-between items-start">
+                 <div className="space-y-2 w-full">
+                   <Skeleton className="h-5 w-2/3" />
+                   <Skeleton className="h-4 w-1/3" />
+                   <div className="flex gap-2 mt-2">
+                     <Skeleton className="h-4 w-20 rounded" />
+                     <Skeleton className="h-4 w-16 rounded" />
+                   </div>
+                 </div>
+                 <div className="text-right space-y-2">
+                   <Skeleton className="h-4 w-12" />
+                   <Skeleton className="h-6 w-16" />
+                 </div>
+               </div>
+             </CardHeader>
+             <CardContent>
+               <div className="flex items-center gap-4">
+                 <Skeleton className="h-16 w-16 rounded-md" />
+                 <div className="space-y-2">
+                   <Skeleton className="h-4 w-20" />
+                   <Skeleton className="h-4 w-24" />
+                 </div>
+               </div>
+             </CardContent>
+             <CardFooter className="border-t">
+               <div className="flex justify-between w-full">
+                 <Skeleton className="h-4 w-24" />
+                 <Skeleton className="h-4 w-16" />
+               </div>
+             </CardFooter>
+           </Card>
+         ))}
+       </div>
       ) : error ? (
         <div className="text-red-500 text-center">Failed to load data.</div>
       ) : viewType === "cart" ? (
@@ -96,57 +131,68 @@ const CustomerItems = ({ id }) => {
           {cartItems.length > 0 ? (
             cartItems.map((item) => (
               <Card key={item._id} className="overflow-hidden">
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <CardTitle>{item.name}</CardTitle>
-                      <CardDescription>
-                        Added on {formatDate(item.createdAt)}
-                      </CardDescription>
-                    </div>
-                    <div className="bg-primary/10 text-primary px-2 py-1 rounded-md">
-                      <Typography variant="small" className="font-medium">
-                        ₹{item.price.toFixed(2)}
-                      </Typography>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center gap-4">
-                    <div className="h-16 w-16 rounded-md overflow-hidden bg-gray-100">
-                      <img
-                        src={item.images[0]}
-                        alt={item.name}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                    <div>
-                      <Typography variant="p" className="font-medium">
-                        Quantity: {item.instock}
-                      </Typography>
-                      <Typography
-                        variant="small"
-                        className="text-muted-foreground"
-                      >
-                        Total: ${(item.price * item.instock).toFixed(2)}
-                      </Typography>
+              <CardHeader>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <CardTitle>{item.name}</CardTitle>
+                    <CardDescription>Added on {formatDate(item.createdAt)}</CardDescription>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      <span className="bg-muted text-muted-foreground px-2 py-0.5 rounded text-xs">
+                        Category: {item.category}
+                      </span>
+                      <span className="bg-muted text-muted-foreground px-2 py-0.5 rounded text-xs">
+                        Type: {item.type}
+                      </span>
+                      {item.onsale && (
+                        <span className="bg-green-100 text-green-800 px-2 py-0.5 rounded text-xs">
+                          🔥 On Sale
+                        </span>
+                      )}
                     </div>
                   </div>
-                </CardContent>
-                <CardFooter className="border-t">
-                  <div className="flex justify-between w-full">
-                    <Typography
-                      variant="small"
-                      className="text-muted-foreground"
-                    >
-                      Item #{item.name}
+                  <div className="text-right">
+                    <Typography variant="small" className="font-medium line-through text-muted-foreground">
+                      ₹{item.price.toFixed(2)}
                     </Typography>
-                    <button className="text-sm text-primary hover:underline">
-                      View Details
-                    </button>
+                    <Typography variant="h5" className="text-primary">
+                      ₹{item.salesprice.toFixed(2)}
+                    </Typography>
                   </div>
-                </CardFooter>
-              </Card>
+                </div>
+              </CardHeader>
+            
+              <CardContent>
+                <div className="flex items-center gap-4">
+                  <div className="h-16 w-16 rounded-md overflow-hidden bg-gray-100">
+                    <img
+                      src={item.images[0]}
+                      alt={item.name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <Typography variant="p" className="font-medium">
+                      Qty: {item.instock}
+                    </Typography>
+                    <Typography variant="small" className="text-muted-foreground">
+                      Status: {item.status}
+                    </Typography>
+                  </div>
+                </div>
+              </CardContent>
+            
+              <CardFooter className="border-t">
+                <div className="flex justify-between w-full">
+                  <Typography variant="small" className="text-muted-foreground">
+                    Product #{item.name}
+                  </Typography>
+                  <button className="text-sm text-primary hover:underline">
+                    View Details
+                  </button>
+                </div>
+              </CardFooter>
+            </Card>
+            
             ))
           ) : (
             <div className="col-span-full flex justify-center items-center h-40">
