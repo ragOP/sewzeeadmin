@@ -14,6 +14,7 @@ import ErrorPage from "@/components/errors/404";
 import CustomerList from "@/pages/customer_list";
 import CustomerDetails from "@/pages/customer_list/page/customer_details";
 import SellerList from "@/pages/seller_list";
+import SellerPosts from "@/pages/seller_list/pages/seller_posts";
 
 const Router = () => {
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ const Router = () => {
           <Route path="customer_list/details/:id" element={<CustomerDetails />} />
 
           <Route path="seller_list" element={<SellerList />} />
+          <Route path="seller_list/posts/:id" element={<SellerPosts />} />
         </Route>
       </Route>
 

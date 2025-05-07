@@ -104,8 +104,6 @@ const SellerTable = ({ setSellersLength, payload }) => {
     },
   ];
 
-  console.log(sellers);
-
   return (
     <CustomTable
       columns={columns}
@@ -113,7 +111,7 @@ const SellerTable = ({ setSellersLength, payload }) => {
       isLoading={isLoading}
       error={error}
       emptyStateMessage="No sellers found"
-      onRowClick={handleRowClick}
+      // onRowClick={handleRowClick}
     />
   );
 };
