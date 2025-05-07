@@ -13,6 +13,7 @@ import Dashboard from "@/pages/dashboard";
 import ErrorPage from "@/components/errors/404";
 import CustomerList from "@/pages/customer_list";
 import CustomerDetails from "@/pages/customer_list/page/customer_details";
+import SellerList from "@/pages/seller_list";
 
 const Router = () => {
   const dispatch = useDispatch();
@@ -45,29 +46,27 @@ const Router = () => {
 
   return (
     <Routes>
+      {/* Default redirect to /dashboard */}
       <Route path="/" element={<Navigate to="/dashboard" />} />
 
-      <Route
-        path="/login"
-        element={
-          // <PublicRoute>
-            <Login />
-          // </PublicRoute>
-        }
-      />
-
-      <Route
-        path="/dashboard"
-        element={
-          // <ProtectedRoute>
-            <Layout />
-          // </ProtectedRoute>
-        }
-      >
-        <Route index element={<Dashboard />} />
-        <Route path="customer_list" element={<CustomerList />} />
-        <Route path="customer_list/details/:id" element={<CustomerDetails />} />
+      {/* Public Routes */}
+      <Route element={<PublicRoute />}>
+        <Route path="/login" element={<Login />} />
       </Route>
+
+      {/* Protected Routes */}
+      <Route element={<ProtectedRoute />}>
+        <Route path="/dashboard" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+
+          <Route path="customer_list" element={<CustomerList />} />
+          <Route path="customer_list/details/:id" element={<CustomerDetails />} />
+
+          <Route path="seller_list" element={<SellerList />} />
+        </Route>
+      </Route>
+
+      {/* Catch-all */}
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );

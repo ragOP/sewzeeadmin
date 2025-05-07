@@ -23,7 +23,7 @@ export function TeamSwitcher({ role }) {
             )}
           </div>
           <div className="grid flex-1 text-left text-sm leading-tight">
-            <span className="truncate font-medium">{"CRM"}</span>
+            <span className="truncate font-medium">{"SEWZEE"}</span>
             <span className="truncate text-xs">
               {isSuperAdmin ? "Super Admin" : "Admin"}
             </span>

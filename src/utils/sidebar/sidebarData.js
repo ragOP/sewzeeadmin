@@ -50,6 +50,14 @@ import {
         items: [],
         roles: ["admin"],
       },
+      {
+        title: "Sellers List",
+        url: "/dashboard/seller_list",
+        icon: Users2,
+        isActive: true,
+        items: [],
+        roles: ["admin"],
+      }
     ],
     // projects: [
     //   {
