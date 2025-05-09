@@ -5,6 +5,7 @@ import {
     Crown,
     FileText,
     FormInput,
+    GalleryThumbnails,
     Layers,
     LayoutDashboard,
     Package,
@@ -13,6 +14,7 @@ import {
     User,
     Users,
     Users2,
+    Image
   } from "lucide-react";
   
   export const data = {
@@ -125,21 +127,28 @@ import {
     //     roles: ["super_admin", "admin"],
     //   },
     // ],
-    // more: [
-    //   {
-    //     title: "Notifications",
-    //     name: "Notifications",
-    //     url: "/notifications",
-    //     icon: BellIcon,
-    //     roles: ["super_admin", "admin"],
-    //   },
-    //   {
-    //     title: "Settings",
-    //     url: "/settings",
-    //     icon: Settings2,
-    //     items: [],
-    //     roles: ["super_admin", "admin"],
-    //   },
-    // ],
+    more: [
+      {
+        title: "Add Thumbnail",
+        name: "Add Thumbnail",
+        url: "/dashboard/add_thumbnail",
+        icon: GalleryThumbnails,
+        roles: ["admin"],
+      },
+      {
+        title: "Add Banner",
+        name: "Add Banner",
+        url: "/dashboard/add_banner",
+        icon: Image,
+        roles: ["admin"],
+      },
+      // {
+      //   title: "Settings",
+      //   url: "/settings",
+      //   icon: Settings2,
+      //   items: [],
+      //   roles: ["super_admin", "admin"],
+      // },
+    ],
   };
   

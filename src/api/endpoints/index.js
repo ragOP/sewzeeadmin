@@ -5,5 +5,9 @@ export const endpoints = {
     user_wishlist: "api/admin/getUserWishlist",
     sellers: "api/admin/getAllSeller",
     seller_posts: "api/admin/getSellerPosts",
-    products: "api/admin/getAllProducts"
+    products: "api/admin/getAllProducts",
+    get_product: "api/admin/getProduct",
+    approve_product: "api/admin/approveProduct",
+    upload_thumbnail: "api/admin/thumbnails",
+    upload_banner: "api/admin/banners",
 }

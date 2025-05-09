@@ -15,6 +15,7 @@ import { data } from "@/utils/sidebar/sidebarData";
 export function AppSidebar({ ...props }) {
 
   const filteredNavMain = filterItemsByRole(data.navMain, "admin");
+  const filteredMore = filterItemsByRole(data.more, "admin");
   const userInfo = data.user;
 
   return (
@@ -25,6 +26,7 @@ export function AppSidebar({ ...props }) {
       </SidebarHeader>
       <SidebarContent className="overflow-y-auto [&::-webkit-scrollbar]:hidden">
         <NavMain items={filteredNavMain} showHeader={false} />
+        <NavMain items={filteredMore} showHeader={true} header={"More"} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={userInfo} />
