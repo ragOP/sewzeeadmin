@@ -1,15 +1,16 @@
 import { apiService } from "@/api/api_service/apiService";
 import { endpoints } from "@/api/endpoints";
 
-export const approveProductById = async ({ id }) => {
+export const uploadCategory = async ({ payload }) => {
   try {
     const apiResponse = await apiService({
-      endpoint: `${endpoints.approve_product}/${id}`,
-      method: "PATCH",
+      endpoint: endpoints.upload_category,
+      method: "POST",
+      data: payload
     });
-
-    if (apiResponse?.response?.product) {
-      return apiResponse?.response?.product;
+    
+    if (apiResponse?.response?.data) {
+      return apiResponse?.response?.data;
     }
 
     return [];

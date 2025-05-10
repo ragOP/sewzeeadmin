@@ -6,7 +6,7 @@ const SellerPosts = () => {
   const { id } = useParams();
   return (
     <div className="flex flex-col gap-4">
-      <NavbarItem title="Seller Posts" />
+      <NavbarItem title="Seller Posts" isBack />
       <SellerPostsCards id={id}/>
     </div>
   );

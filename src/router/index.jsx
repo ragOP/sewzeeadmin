@@ -19,6 +19,9 @@ import AllProducts from "@/pages/all_products";
 import ProductDetails from "@/pages/all_products/pages/product_details";
 import AddThumbnail from "@/pages/add_thumbnail";
 import AddBanner from "@/pages/add_banner";
+import AddCategory from "@/pages/add_category";
+import SendNotification from "@/pages/send_notification";
+import SellerDetails from "@/pages/seller_list/pages/seller_details";
 
 const Router = () => {
   const dispatch = useDispatch();
@@ -69,12 +72,15 @@ const Router = () => {
 
           <Route path="seller_list" element={<SellerList />} />
           <Route path="seller_list/posts/:id" element={<SellerPosts />} />
+          <Route path="seller_list/details/:id" element={<SellerDetails />} />
 
           <Route path="products" element={<AllProducts />} />
           <Route path="products/details/:id" element={<ProductDetails />} />
 
           <Route path="add_thumbnail" element={<AddThumbnail />} />
           <Route path="add_banner" element={<AddBanner />} />
+          <Route path="add_category" element={<AddCategory />} />
+          <Route path="send_notification" element={<SendNotification />} />
         </Route>
       </Route>
 

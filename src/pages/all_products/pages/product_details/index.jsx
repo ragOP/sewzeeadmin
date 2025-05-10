@@ -4,10 +4,9 @@ import ProductItems from "./components/ProductItems";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  console.log(id);
   return (
     <div className="flex flex-col gap-4">
-      <NavbarItem title="Product Details" />
+      <NavbarItem title="Product Details" isBack />
       <ProductItems id={id}/>
     </div>
   );

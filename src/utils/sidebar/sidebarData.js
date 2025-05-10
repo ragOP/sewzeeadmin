@@ -14,7 +14,9 @@ import {
     User,
     Users,
     Users2,
-    Image
+    Image,
+    Plus,
+    Bell
   } from "lucide-react";
   
   export const data = {
@@ -142,6 +144,20 @@ import {
         icon: Image,
         roles: ["admin"],
       },
+      {
+        title: "Add Category",
+        name: "Add Category",
+        url: "/dashboard/add_category",
+        icon: Plus,
+        roles: ["admin"],
+      }, 
+      {
+        title: "Notification",
+        name: "Notification",
+        url: "/dashboard/send_notification",
+        icon: Bell,
+        roles: ["admin"],
+      }
       // {
       //   title: "Settings",
       //   url: "/settings",

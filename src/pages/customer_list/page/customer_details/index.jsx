@@ -6,7 +6,7 @@ const CustomerDetails = () => {
   const { id } = useParams();
   return (
     <div className="flex flex-col gap-4">
-      <NavbarItem title="Customer Details" />
+      <NavbarItem title="Customer Details" isBack />
       <CustomerItems id={id}/>
     </div>
   );

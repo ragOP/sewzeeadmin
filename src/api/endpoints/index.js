@@ -4,10 +4,13 @@ export const endpoints = {
     users_cart: "api/admin/getUserCart",
     user_wishlist: "api/admin/getUserWishlist",
     sellers: "api/admin/getAllSeller",
+    seller_details: "api/admin/getseller",
     seller_posts: "api/admin/getSellerPosts",
     products: "api/admin/getAllProducts",
     get_product: "api/admin/getProduct",
     approve_product: "api/admin/approveProduct",
     upload_thumbnail: "api/admin/thumbnails",
     upload_banner: "api/admin/banners",
+    upload_category: "api/admin/addCategory",
+    upload_notification: "api/admin/sendNotification"
 }
