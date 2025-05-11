@@ -12,7 +12,7 @@ const NotificationCard = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    image: null,
+    banner: null,
   });
 
   const navigate = useNavigate();
@@ -20,14 +20,14 @@ const NotificationCard = () => {
   const [errors, setErrors] = useState({
     title: false,
     description: false,
-    image: false,
+    banner: false,
   });
 
   const { mutate: uploadMutation, isPending: isUploading } = useMutation({
     mutationFn: (formPayload) => uploadNotification({ payload: formPayload }),
     onSuccess: () => {
       toast.success("Notification sent successfully.");
-      setFormData({ title: "", description: "", image: null });
+      setFormData({ title: "", description: "", banner: null });
       setImagePreview(null);
       navigate("/dashboard");
     },
@@ -36,7 +36,7 @@ const NotificationCard = () => {
   });
 
   const handleFileChange = (file) => {
-    setFormData((prev) => ({ ...prev, image: file }));
+    setFormData((prev) => ({ ...prev, banner: file }));
 
     const reader = new FileReader();
     reader.onload = () => {
@@ -44,19 +44,19 @@ const NotificationCard = () => {
     };
     reader.readAsDataURL(file);
 
-    setErrors((prev) => ({ ...prev, image: false }));
+    setErrors((prev) => ({ ...prev, banner: false }));
   };
 
   const handleSubmit = () => {
     const hasError = {
       title: !formData.title.trim(),
       description: !formData.description.trim(),
-      image: !formData.image,
+      banner: !formData.banner,
     };
 
     setErrors(hasError);
 
-    if (hasError.title || hasError.description || hasError.image) {
+    if (hasError.title || hasError.description || hasError.banner) {
       toast.error("Please fill all required fields.");
       return;
     }
@@ -64,7 +64,7 @@ const NotificationCard = () => {
     const formPayload = new FormData();
     formPayload.append("title", formData.title);
     formPayload.append("description", formData.description);
-    formPayload.append("image", formData.image);
+    formPayload.append("banner", formData.banner);
 
     uploadMutation(formPayload);
   };
